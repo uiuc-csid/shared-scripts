@@ -1,0 +1,30 @@
+##########
+# GetOrgMemberFromSSO: Look up the GitHub username that corresponds to a
+#   SAML-authenticated member in your org (e.g., university email address)
+#
+# Inputs:
+# - samlIdentity: SAML login identity (e.g. the user's university email
+#     address, including the domain)
+# - org: the slug for your organization (as it would appear in the URL)
+#
+# Output:
+# - login: the GitHub username that corresponds to the identity (if found)
+#
+# Note: If no match is found for the identity, then the edges list will
+#   be empty.
+##########
+query GetOrgMemberFromSSO($samlIdentity: String!, $org: String!) {
+  organization(login: $org) {
+    samlIdentityProvider {
+      externalIdentities(userName: $samlIdentity, first: 1) {
+        edges {
+          node {
+            user {
+              login
+            }
+          }
+        }
+      }
+    }
+  }
+}
