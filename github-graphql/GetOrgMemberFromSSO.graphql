@@ -10,8 +10,8 @@
 # Output:
 # - login: the GitHub username that corresponds to the identity (if found)
 #
-# Note: If no match is found for the identity, then the edges list will
-#   be empty.
+# Note: If no match is found for samlIdentity, then the edges list will be
+#   empty.
 ##########
 query GetOrgMemberFromSSO($samlIdentity: String!, $org: String!) {
   organization(login: $org) {

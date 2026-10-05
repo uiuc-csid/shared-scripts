@@ -10,8 +10,8 @@
 # - nameId: SAML login identity (e.g. the user's university email
 #     address, including the domain)
 #
-# Note: If no match is found for the identity, then the edges list will
-#   be empty.
+# Note: If no match is found for userName, then the edges list will be
+#   empty.
 ##########
 query GetSSOFromOrgMember($userName: String!, $org: String!) {
   organization(login: $org) {
